@@ -11,9 +11,15 @@ clone and run
 cabal install
 
 ```
-this should install the pretty-hs exebutable into your ~/.cabal/bin/, make sure it's in your path.
+this should install the pretty-hs exebutable into your ~/.cabal/bin/ or cabal binary directory, make sure it's in your path.
 
 ## Usage
+
+The `prettyPrint` function is called with stdin input and format it to stdout.
+If your text editor supports external formmater, you can use it to format code fragments.
+
+
+## Vim Integration
 
 add this into your `.vimrc`
 
@@ -23,7 +29,7 @@ au BufEnter *.hs setl formatprg=pretty-hs\ --stdin\ --stdout
 ```
 and use `gq` to format a block of selected codes, if the source can't be parsed, it'll return the original source.
 
-## formatter demo
+##Formatter demo
 
 visual select the following code
 
