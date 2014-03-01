@@ -1,21 +1,29 @@
-# pretty
+# pretty-hs
 
-pretty print haskell source code
+very basic haskell source code pretty printer using [Language.Haskell.Exts.Pretty](http://hackage.haskell.org/package/haskell-src-exts-1.14.0.1/docs/Language-Haskell-Exts-Pretty.html#v:prettyPrint)
+
 
 ## Installation
 
-TODO: Write installation instructions here
+clone and run
+
+```
+cabal install
+
+```
+this should install the pretty-hs exebutable into your ~/.cabal/bin/, make sure it's in your path.
 
 ## Usage
 
-TODO: Write usage instructions here
-
-## How to run tests
+add this into your `.vimrc`
 
 ```
-cabal configure --enable-tests && cabal build && cabal test
+au BufEnter *.hs setl formatprg=pretty-hs\ --stdin\ --stdout
+
 ```
+and use `gq` to format a block of selected codes, if the source can't be parsed, it'll return the original source.
 
-## Contributing
 
-TODO: Write contribution instructions here
+## Limitation
+
+the `Language.Haskell.Exts` doesn't provide parameterized formatter, and the comments is discarded in the `prettyPrint` function, so this formatter is just used for formatting code fragments.
