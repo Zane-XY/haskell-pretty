@@ -2,6 +2,7 @@ module Pretty where
 
 import Language.Haskell.Exts.Annotated
 
+
 prettyHS :: String -> String
 prettyHS src
   = case parseFileContentsWithComments defaultParseMode src of
