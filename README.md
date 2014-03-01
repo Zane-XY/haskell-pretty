@@ -23,7 +23,29 @@ au BufEnter *.hs setl formatprg=pretty-hs\ --stdin\ --stdout
 ```
 and use `gq` to format a block of selected codes, if the source can't be parsed, it'll return the original source.
 
+## formatter demo
+
+visual select the following code
+
+```
+prettyHS ::             String     ->          String
+prettyHS src = case parseFileContentsWithComments defaultParseMode src of
+        ParseOk (ast, _)          -> prettyPrint ast
+        _ ->       src
+
+```
+format with `gq`, you'll get:
+
+```
+prettyHS :: String -> String
+prettyHS src
+  = case parseFileContentsWithComments defaultParseMode src of
+        ParseOk (ast, _) -> prettyPrint ast
+        _ -> src
+
+```
 
 ## Limitation
 
-the `Language.Haskell.Exts` doesn't provide parameterized formatter, and the comments is discarded in the `prettyPrint` function, so this formatter is just used for formatting code fragments.
+the `Language.Haskell.Exts` doesn't provide parameterized formatter, so it's not configurable. 
+And the comments is discarded in the `prettyPrint` function, so this formatter is just used for formatting code fragments.
